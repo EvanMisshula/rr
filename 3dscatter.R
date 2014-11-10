@@ -1,0 +1,11 @@
+X = seq(1, 100, 5)
+Y = seq (1, 100, 5)
+Z = rnorm (length (X), 10, 2)
+data1 <- data.frame (X, Y, Z)
+data2 <- data.frame (X, Y, Z1 = Z - 5)
+data3 <- data.frame (X, Y, Z1 = Z - 3)
+
+require(scatterplot3d)
+s3d <- scatterplot3d(data1, color = "blue", pch = 19, xlim=NULL, ylim=NULL, zlim= c(0, 20))
+s3d$points3d(data2, col = "red", pch = 18)
+s3d$points3d(data3, col = "green4", pch = 17)

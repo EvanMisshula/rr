@@ -1,0 +1,379 @@
+#+Title: Org-mode as a tool for reproducible research
+#+Author: Evan Misshula
+#+Email: emisshula@jjay.cuny.edu
+
+#+TAGS:       Write(w) Update(u) Fix(f) Check(c) noexport(n) export(e)
+#+OPTIONS: reveal_center:t reveal_progress:t reveal_history:nil reveal_control:t
+#+OPTIONS: reveal_mathjax:t reveal_rolling_links:t reveal_keyboard:t reveal_overview:t num:nil
+#+OPTIONS: reveal_width:1200 reveal_height:800
+#+OPTIONS: toc:nil
+#+REVEAL_MARGIN: 0.1
+#+REVEAL_MIN_SCALE: 0.5
+#+REVEAL_MAX_SCALE: 2.5
+#+REVEAL_TRANS: cube
+#+REVEAL_THEME: moon
+#+REVEAL_HLEVEL: 2
+#+REVEAL_HEAD_PREAMBLE: <meta name="description" content="Org-Reveal Introduction.">
+#+REVEAL_POSTAMBLE: <p> Created by yjwen. </p>
+#+REVEAL_PLUGINS: (highlight markdown)
+
+
+
+
+
+
+* Reproducible research						     :export:
+
+Reproducible research is the idea that scientific claims are published:
+ - with their data 
+ - software code used to analyze them
+
+* Clarebout's principal						     :export:
+#+Begin_quote
+ "An article about computational result is advertising, not
+ scholarship. The actual scholarship is the full software environment,
+ code and data, that produced the result."
+#+end_quote
+Claerbout and Karrenbach, Proceedings of the 62nd Annual International Meeting of the Society of Exploration Geophysics. 1992
+
+* Tie code to figure						     :export:
+    
+#+begin_quote
+    "When we publish articles containing figures which were generated
+    by computer, we also publish the complete software environment
+    which generates the figures” 
+#+end_quote
+Buckheit & Donoho, Wavelab and Reproducible Research, 1995.
+
+* Overview							     :export:
+  - scope of the problem
+  - definitions
+  - current practice
+  - tools 
+  - changes to improve reproducibility and differentiate research
+
+* Is /#Reproducibility/ a problem? 				     :export:
+
+** Cancer research
+   - In 2012, an Amgen team tried to reproduce important resutls
+   - pre-clinical targets for cancer 
+   - 47 out of 53 medical research papers 
+   - were irreproducible
+
+([[http://www.nature.com/nature/journal/v483/n7391/full/483531a.html]])
+
+** Psychology
+ -  Researchers explained in a 2006 study that, of 249 data sets from
+    American Psychology Association (APA) empirical articles, 73% of
+    contacted authors did not respond with their data over a 6-month
+    period.
+ - http://www.ncbi.nlm.nih.gov/pubmed/17032082
+
+** Psychology II
+
+#+ATTR_HTML: :width 850px :alt replication 
+[[./images/Screen Shot 2014-11-02 at 10.53.23 PM.png]]
+
+- Ioannidis, /Why science is not necessarily self-correcting/ 2012
+
+** Economics
+*** *Reinhart & Rogoff* /Growth in a time of debt/, NBER, 2009
+
+    - High debt-to-gdp and low gdp growth are associated 
+    - Made their calculations in Excel
+    - Substantial popular impact on autsterity politics
+#+ATTR_REVEAL: :frag roll-in highlight-red
+    - Grad student finds an error in the coding
+#+ATTR_REVEAL: :frag roll-in highlight-green
+    - Herndon, Ash and Pollin publish a rebuttal
+
+*** Advice from a statistician
+
+#+ATTR_HTML: :width 850px :alt replication 
+[[./images/Screen Shot 2014-11-03 at 12.07.36 AM.png]]
+
+
+** Computer Science
+
+Christian Collberg (http://reproducibility.cs.arizona.edu/v1/tr.pdf) looked 
+at the papers in eight conferences and five ACM journals.  They were able 
+to reproduce 102 out 613 papers 24.9%
+
+   
+** History of reproducible research
+*** Mathematics
+ - First proofs Greeks (ca. 400 B.C.E.)
+   - Pythagoras (569–500 B.C.E.) proofs
+   - Euclid of Alexandria (325 B.C.E.–265 B.C.E.) axioms and definitions
+   - Eudoxus (408 B.C.E–355 B.C.E.) theorems
+   - William of Occam (1288 C.E.–1348 C.E.) fewest steps
+*** Advances in mathematics and proof
+    - Jean Baptiste Joseph Fourier (1768–1830) 
+      - expansion of an arbitrary function into a trigonometric series
+    - Evariste Galois (1812–1832) and Augustin Louis-Cauchy (1789–1857) 
+      - abstract algebra by inventing group theory.
+    - Bernhard Riemann (1826–1866) 
+      - differential geometry, complex variable theory
+    - Augustin-Louis Cauchy
+      - partial differential equations
+    - Carl Jacobi (1804–1851), Ernst Kummer (1810–1893), Niels Henrick Abel (1802–1829)
+      - number theory
+    - Joseph Louis Lagrange (1736–1813), Cauchy 
+      - calculus of variations, classical mechanics, the implicit function theorem
+    - Karl Weierstrass (1815–1897) 
+      - real and complex analysis with numerous examples and proofs
+
+*** Anti-replicatants
+ - Gauss
+   - inscrutible style
+ - Bourbaki
+   - Rejection of intuition of any kind
+*** Gauss
+#+Begin_quote
+"No self-respecting architect leaves the scaffolding in place after completing the building."
+#+end_quote
+attributed to Carl Friedrich Gauss (1777 C.E. - 1855 C.E.) in defense of his inscrutible style
+
+*** Twentieth Century Contributions
+#+Begin_quote
+A proof is any completely convincing argument.
+#+end_quote
+Everret Bishop, inventor of /Constructive Analysis/
+E. Bishop, /Foundations of Constructive Analysis/, McGraw-Hill, New York, 1967.
+
+
+
+** Experiments
+ - Robert Grosseteste (c. 1175 C.E. –  1253 C.E.)
+   - reasoned from universal to particular prediction
+   - /Posterior Analytics/
+ - Roger Bacon, (c. 1214 C.E. – 1294 C.E.)
+   - observation, hypothesis, experimentation, and the need for independent verification. 
+ - Galileo (1564 C.E. - 1642 C.E.),manufactured multiple /copies/ of his telescopes
+ - Pasteur added /Materials and Methods/ section to articles
+
+* Modern leaders of reproducibility I				     :export:
+ - Knuth (1984) "literate programming"
+   - http://comjnl.oxfordjournals.org/content/27/2/97.short
+ - Stallman (1984) FREE software
+   - https://www.gnu.org/philosophy/free-sw.html
+ - Lessig, Abelson and Eldred (2001) Creative Commons
+   - https://creativecommons.org
+ - Torvalds (2005) git
+   - http://git-scm.com/book/en/v2/Getting-Started-A-Short-History-of-Git
+
+* Modern leaders of reproducibility II				     :export:
+ - Iodonnis (2005)
+   - most published research is False
+   - 25 million papers between 1996 - 2011   
+   - 85% of research assets are wasted
+   http://www.plosmedicine.org/article/info%3Adoi%2F10.1371%2Fjournal.pmed.0020124
+ - Stodden (2007)
+   The Legal Framework for Reproducible Scientific Research: Licensing and Copyright
+   - http://researchcompendia.org
+   - http://www.runmycode.org
+   - http://scitation.aip.org/content/aip/journal/cise/11/1/10.1109/MCSE.2009.19
+ 
+* Tools for computational reproduciblity			     :export:
+  - (Stodden, April 2014)
+    - http://web.stanford.edu/~vcs/Talks.html 
+  - (Marwick, March 2013)
+    - http://rpubs.com/benmarwick/csss-rr
+** Dissememination platforms
+
+  - [[http://researchcompendia.org/][ResearchCompendia.org]] (already published articles)
+  - [[http://mloss.org/software/][MLOSS.org ]] (machine learning)
+  - [[http://datahub.io/][thedatahub.org]] (data sets)
+  - [[https://osf.io/][Open Science Framework]] (planning to publishing)
+  - [[http://www.ahay.org/wiki/Main_Page][Madagascar]] (multi-dimensional analysis)
+  - [[http://nanohub.org/][nanoHUB.org]] (nano-techonology simulation platform)
+  - [[http://www.runmycode.org/][runmycode.org]] (code and data)
+
+** Research Environments
+
+  - [[http://www.vistrails.org/index.php/Main_Page#VisTrails_Overview][VisTrails]] (python libraries and \LaTex) 
+  - [[https://kepler-project.org/][Kepler-project]] (R and C wrappers though built in Java)
+  - [[https://usegalaxy.org/][Galaxy]] (biomedical data analysis)
+  - [[http://www.broadinstitute.org/cancer/software/genepattern/][GenePattern]] (gene analysis framework)
+  - [[http://neuralensemble.org/sumatra/][Sumatra]] (electronic notebook for simulations) 
+  - [[http://www.taverna.org.uk/introduction/][Taverna]] (workflow management and R)
+  - [[http://www.pgbovine.net/cde.html][CDE]] (portable linux apps with data and dependencies)
+
+** Embedded Publishing
+
+  - [[http://jupyter.org/][Jupyter]] (2014, multi-language interactive environment)
+  - [[http://ipython.org/][IPython]] (Perez and Granger, 2007, python interactive environment)
+  - [[http://vcr.stanford.edu/][Verifiable Computational Research]] (Stanford University, matlab plugin) 
+  - [[https://collage.elsevier.com/][Collage]] (Elsevier)
+  - [[http://is.ieis.tue.nl/staff/pvgorp/share/][share]] (University of Eindhoven, linux containers)
+  - [[https://www.stat.uni-muenchen.de/~leisch/Sweave/][Sweave]] (Leisch 2002, R)
+  - [[http://yihui.name/knitr/][knitr]] (Xie, 2013, R)
+  - [[http://orgmode.org/][Org-mode]] (Schulte, 2012, multi-language)
+
+** Org-mode solves three problems
+(Kitchin, /Emacs, Org-mode + python reproducible research/, 2013)
+http://www.youtube.com/watch?v=1-dUkyn_fZA
+
+   - documents computation workflow
+   - integrates text, math and code
+   - produce or modifies a figure
+
+** Org mode and Emacs
+   - Emacs is written in a full programming language
+   - understands LaTeX, markdown, language modes (R, Python, C, C++ and Java etc.)
+   - can interact with OS
+     - execute code
+     - read the standard output
+     - read the standard error (and insert into the buffer)
+
+** Org-mode
+   - note taking
+   - TODO lists
+   - differentiates between text, code and data
+   - code executes in the buffer
+   - enables links to files, urls
+   - #+INCLUDE allows files to be broken into reusable pieces
+   - exports available LaTeX, html, reveal.js etc.
+
+* Initialize languages	(main document) 			     :export:
+#+BEGIN_SRC org 
+,** org file
+[[file:initialize.org]]
+#+END_SRC
+
+* Initialize languages						     :export:
+#+name: initialize_lang
+#+source: configuration
+#+begin_src emacs-lisp :results output :exports code
+;; first it is necessary to ensure that Org-mode loads support for the
+;; languages used by code blocks in this article
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '(
+     (ditaa      . t)     
+     (dot        . t)
+     (emacs-lisp . t)
+     (haskell    . t)
+     (org        . t)
+     (perl       . t)
+     (python     . t)
+     (R          . t)
+     (ruby       . t)
+     (sh         . t)
+     (sqlite     . t)))
+  ;; then we'll remove the need to confirm evaluation of each code
+  ;; block, NOTE: if you are concerned about execution of malicious code
+  ;; through code blocks, then comment out the following line
+  (setq org-confirm-babel-evaluate nil)
+  ;; finally we'll customize the default behavior of Org-mode code blocks
+  ;; so that they can be used to display examples of Org-mode syntax
+  (setf org-babel-default-header-args:org '((:exports . "code")))
+#+end_src
+
+#+RESULTS:
+
+#+name: square
+#+header: :var x=5
+#+begin_src python :results value :exports none
+return x*x
+#+end_src
+
+#+RESULTS: square
+: 25
+
+* shell script tricks						     :export:
+#+name: sort_files
+#+begin_src sh :results output :exports both
+  cd ~/Documents/rr  
+  ls | sort
+#+END_SRC 
+
+* shell script (how it exports, code only) 			     :export:
+#+name: sort_files
+#+begin_src sh :results output :exports code
+  cd ~/Documents/rr
+  ls | sort
+#+END_SRC
+
+* shell script (how it looks in Emacs) 				     :export:
+
+#+ATTR_HTML: :width 850px :alt shell-script
+[[./images/shell_org.png]]
+
+* python script (code and results)				     :export:
+#+name: sort_files_python
+#+begin_src python :results output :exports both
+  import os
+  files = os.listdir('.')
+  files.sort()
+  for f in files: print f 
+#+END_SRC 
+
+* text and math (raw latex)					     :export:
+
+#+ATTR_HTML: :width 850px :alt raw-latex
+[[./images/raw_latex_org.png]]
+
+* text and compiled LaTex 					     :export:
+
+#+ATTR_HTML: :width 850px :alt processed-latex
+[[./images/processed_latex_org.png]]
+
+* create a graph (exported code) 				     :export:
+#+name: three_d_scatter
+#+BEGIN_SRC R :file three_d_scatter.png :results graphics :export both 
+X = seq(1, 100, 5)
+Y = seq (1, 100, 5)
+Z = rnorm (length (X), 10, 2)
+data1 <- data.frame (X, Y, Z)
+data2 <- data.frame (X, Y, Z1 = Z - 5)
+data3 <- data.frame (X, Y, Z1 = Z - 3)
+
+require(scatterplot3d)
+s3d <- scatterplot3d(data1, color = "blue", pch = 19, xlim=NULL, ylim=NULL, zlim= c(0, 20))
+s3d$points3d(data2, col = "red", pch = 18)
+s3d$points3d(data3, col = "green4", pch = 17)
+#+END_SRC
+
+#+RESULTS: three_d_scatter
+[[file:three_d_scatter.png]]
+
+* graph (exported result) 					     :export:
+
+#+ATTR_HTML: :width 650px :alt processed-graph
+[[file:three_d_scatter.png]]
+
+* graph function (how it looks in Emacs)			     :export:
+
+#+ATTR_HTML: :width 850px :alt raw-graph-function
+[[file:images/raw_graph_org.png]]
+
+
+** addenda							   :noexport:
+The need for reproducibility is increasing dramatically as data
+analyses become more complex, involving larger datasets and more
+sophisticated computations. Reproducibility allows for people to focus
+on the actual content of a data analysis, rather than on superficial
+details reported in a written summary. In addition, reproducibility
+makes an analysis more useful to others because the data and code that
+actually conducted the analysis are available.
+
+* how do we make it better					     :export:
+#+ATTR_REVEAL: :frag roll-in
+Don't submit or cite journals that don't make code and data available.
+#+ATTR_REVEAL: :frag roll-in
+Don't review unless code and data are provided.
+#+ATTR_REVEAL: :frag roll-in
+Promote FOSS software at your institution.
+#+ATTR_REVEAL: :frag roll-in
+Don't work for an advisor that won't learn source control.
+#+ATTR_REVEAL: :frag roll-in
+ - Evan Misshula
+ - @emisshula
+ - [[http://EvanMisshula.github.io]]
+* links								   :noexport:
+
+https://www.eff.org/deeplinks/2014/10/open-access-week-2014-wrap-posts-pictures-and-parties
+http://news.sciencemag.org/physics/2014/05/blockbuster-big-bang-result-may-fizzle-rumor-suggests
+http://rpubs.com/benmarwick/csss-rr
+code manifesto
