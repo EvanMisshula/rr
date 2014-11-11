@@ -273,13 +273,13 @@ http://www.youtube.com/watch?v=1-dUkyn_fZA
 #+RESULTS:
 
 #+name: square
-#+header: :var x=5
+#+header: :var x=55
 #+begin_src python :results value :exports none
 return x*x
 #+end_src
 
 #+RESULTS: square
-: 25
+: 3025
 
 * shell script tricks						     :export:
 #+name: sort_files
@@ -287,6 +287,26 @@ return x*x
   cd ~/Documents/rr  
   ls | sort
 #+END_SRC 
+
+#+RESULTS: sort_files
+#+begin_example
+3dscatter.R
+3dscatter.R~
+dav.org
+gh
+images
+initialize.org
+initialize.org~
+mybib.bib
+mybib.bib~
+reveal.js
+rr.html
+rr.html~
+rr.org
+rr.org~
+three_d_scatter.png
+threed_scatter.png
+#+end_example
 
 * shell script (how it exports, code only) 			     :export:
 #+name: sort_files
