@@ -1,0 +1,8 @@
+There will be a full readme eventually.
+
+To get this to play.  You should look to org-reveal and reveal.js to get the 
+presentation to play.  Please create issues and I will respond.
+
+
+Thanks,
+Evan
