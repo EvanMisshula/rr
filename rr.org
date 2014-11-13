@@ -179,7 +179,7 @@ E. Bishop, /Foundations of Constructive Analysis/, McGraw-Hill, New York, 1967.
     - http://web.stanford.edu/~vcs/Talks.html 
   - (Marwick, March 2013)
     - http://rpubs.com/benmarwick/csss-rr
-** Dissememination platforms
+** Dissemination platforms
 
   - [[http://researchcompendia.org/][ResearchCompendia.org]] (already published articles)
   - [[http://mloss.org/software/][MLOSS.org ]] (machine learning)
