@@ -391,9 +391,10 @@ Don't work for an advisor that won't learn source control.
  - Evan Misshula
  - @emisshula
  - [[http://EvanMisshula.github.io]]
+
 * links								   :noexport:
 
-https://www.eff.org/deeplinks/2014/10/open-access-week-2014-wrap-posts-pictures-and-parties
-http://news.sciencemag.org/physics/2014/05/blockbuster-big-bang-result-may-fizzle-rumor-suggests
-http://rpubs.com/benmarwick/csss-rr
-code manifesto
+- https://www.eff.org/deeplinks/2014/10/open-access-week-2014-wrap-posts-pictures-and-parties
+- http://news.sciencemag.org/physics/2014/05/blockbuster-big-bang-result-may-fizzle-rumor-suggests
+- http://rpubs.com/benmarwick/csss-rr
+
